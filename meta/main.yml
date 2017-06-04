@@ -1,0 +1,23 @@
+---
+
+galaxy_info:
+  author: Gunter Grodotzki
+  description: Installs UniFi Video
+  company: weheartwebsites UG
+  license: MIT
+  min_ansible_version: 2.3
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+    - xenial
+  - name: Debian
+    versions:
+    - jessie
+  galaxy_tags:
+    - system
+    - networking
+    - cctv
+    - unifi
+dependencies:
+  - lifeofguenter.oracle-java
