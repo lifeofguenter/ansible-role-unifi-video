@@ -23,3 +23,10 @@
     update_cache: yes
     cache_valid_time: 3600
   become: yes
+
+- name: add default-conf
+  template:
+    src: default.conf
+    dest: /etc/default/unifi-video
+    mode: 0644
+  become: yes
