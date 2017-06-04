@@ -2,7 +2,7 @@
 
 # Ansible Role: UniFi Video
 
-An Ansible role that installs UniFi Video on Debian like systems.
+An Ansible role that installs UniFi Video (Ubiquiti Networks) on Debian like systems.
 
 ## Requirements
 

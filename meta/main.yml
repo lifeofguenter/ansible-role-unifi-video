@@ -9,15 +9,17 @@ galaxy_info:
   platforms:
   - name: Ubuntu
     versions:
-    - trusty
     - xenial
+    - trusty
   - name: Debian
     versions:
     - jessie
+    - wheezy
   galaxy_tags:
     - system
     - networking
     - cctv
     - unifi
 dependencies:
-  - lifeofguenter.oracle-java
+  - src: lifeofguenter.oracle-java
+    version: 0.1.20
