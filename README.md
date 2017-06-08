@@ -10,7 +10,9 @@ none
 
 ## Role Variables
 
-none
+- `unifi_video_version: 3.6.3`
+- `unifi_video_jvm_mx: 520M`
+- `unifi_video_app_session_timeout: 1440`
 
 ## Dependencies
 
