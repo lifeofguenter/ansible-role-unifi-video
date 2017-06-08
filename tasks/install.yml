@@ -1,38 +1,42 @@
 ---
 
 - set_fact:
-    unifi_video_distribution_major_version: 7
+    unifi_video_repo_release: wheezy
   when: ansible_distribution == 'Debian'
 
-- set_fact:
-    unifi_video_distribution_major_version: "{{ ansible_distribution_version }}"
-  when: ansible_distribution == 'Ubuntu'
-
-#- name: add apt-key
-#  apt_key:
-#    url: "http://www.ubnt.com/downloads/unifi-video/apt-3.x/unifi-video.gpg.key"
-#    state: present
-#  become: yes
-#
-#- name: add apt-repo
-#  apt_repository:
-#    repo: deb [arch=amd64] http://www.ubnt.com/downloads/unifi-video/apt-3.x {{ unifi_video_repo_release }} ubiquiti
-#    state: present
-#  become: yes
-#
-#- name: install unifi-video
-#  apt:
-#    name: unifi-video
-#    state: present
-#    update_cache: yes
-#    cache_valid_time: 3600
-#  become: yes
-
-- name: Install a .deb package from the internet.
-  apt:
-    deb: "{{ unifi_video_deb_url }}"
-    force: yes
+- name: add apt-key
+  apt_key:
+    url: "http://www.ubnt.com/downloads/unifi-video/apt-3.x/unifi-video.gpg.key"
+    state: present
   become: yes
+
+- name: add apt-repo
+  apt_repository:
+    repo: deb [arch=amd64] http://www.ubnt.com/downloads/unifi-video/apt-3.x {{ unifi_video_repo_release }} ubiquiti
+    state: present
+  become: yes
+
+- name: install unifi-video
+  apt:
+    name: unifi-video
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  become: yes
+
+#- set_fact:
+#    unifi_video_distribution_major_version: 7
+#  when: ansible_distribution == 'Debian'
+#
+#- set_fact:
+#    unifi_video_distribution_major_version: "{{ ansible_distribution_version }}"
+#  when: ansible_distribution == 'Ubuntu'
+#
+#- name: Install a .deb package from the internet.
+#  apt:
+#    deb: "{{ unifi_video_deb_url }}"
+#    force: yes
+#  become: yes
 
 - name: add default.conf
   template:
