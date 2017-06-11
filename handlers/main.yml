@@ -1,0 +1,12 @@
+---
+
+- name: unifi_video_reload_systemd
+  command: systemctl daemon-reload
+  become: yes
+
+- name: restart_unifi_video
+  service:
+    name: unifi-video
+    state: restarted
+    enabled: yes
+  become: yes

@@ -44,6 +44,7 @@
     dest: /etc/default/unifi-video
     mode: 0644
   become: yes
+  notify: restart_unifi
 
 - name: add system.properties
   template:
@@ -51,3 +52,6 @@
     dest: /usr/lib/unifi-video/etc/system.properties
   become: yes
   become_user: unifi-video
+  notify:
+    - unifi_video_reload_systemd
+    - restart_unifi
