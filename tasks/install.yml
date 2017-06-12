@@ -44,7 +44,7 @@
     dest: /etc/default/unifi-video
     mode: 0644
   become: yes
-  notify: restart_unifi
+  notify: restart_unifi_video
 
 - name: add system.properties
   template:
