@@ -54,4 +54,4 @@
   become_user: unifi-video
   notify:
     - unifi_video_reload_systemd
-    - restart_unifi
+    - restart_unifi_video
