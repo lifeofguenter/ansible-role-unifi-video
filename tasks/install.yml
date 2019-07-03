@@ -18,14 +18,12 @@
 
 - name: install unifi-video
   apt:
-    name: "{{ item }}"
+    name:
+      - acl
+      - unifi-video
     state: present
     update_cache: yes
     cache_valid_time: 3600
-  with_items:
-    # http://stackoverflow.com/a/37096534/567193
-    - acl
-    - unifi-video
   become: yes
 
 #- set_fact:
@@ -50,10 +48,3 @@
   become: yes
   notify: restart_unifi_video
 
-- name: add system.properties
-  template:
-    src: system.properties
-    dest: /usr/lib/unifi-video/etc/system.properties
-  become: yes
-  become_user: unifi-video
-  notify: restart_unifi_video
