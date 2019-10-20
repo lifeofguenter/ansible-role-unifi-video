@@ -1,8 +1,5 @@
 ---
 
 - name: restart_unifi_video
-  service:
-    name: unifi-video
-    state: restarted
-    enabled: yes
+  shell: systemctl stop unifi-video && systemctl start unifi-video
   become: yes

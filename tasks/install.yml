@@ -1,8 +1,11 @@
 ---
 
+# buster not yet supported: https://www.ui.com/download/unifi-video/unifi-nvr
 - set_fact:
-    unifi_video_repo_release: wheezy
-  when: ansible_distribution == 'Debian'
+    unifi_video_repo_release: stretch
+  when:
+    - ansible_distribution == 'Debian'
+    - ansible_distribution_release == 'buster'
 
 - name: add apt-key
   apt_key:
