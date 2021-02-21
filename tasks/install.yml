@@ -29,6 +29,7 @@
 - name: install unifi-video
   apt:
     deb: "{{ unifi_video_deb_url }}"
+  become: yes
 
 - name: add default.conf
   template:
