@@ -1,6 +1,5 @@
 ---
 
-#unifi_video_version: 3.7.1
+unifi_video_version: 3.10.13
 
 unifi_video_jvm_mx: 520M
-

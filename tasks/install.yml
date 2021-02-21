@@ -1,26 +1,29 @@
 ---
 
+- set_fact:
+    unifi_video_os_major_version: 9
+  when:
+    - ansible_distribution == 'Debian'
+    - ansible_distribution_release == 'buster'
+
 - name: add apt-key
   apt_key:
-    url: https://dl.ui.com/unifi/unifi-repo.gpg
+    url: https://d.peegeepee.com/795C6027520643F0BA02297F97B46B8582C6571E.asc
     state: present
   become: yes
 
-- name: add apt-repo
-  apt_repository:
-    repo: deb https://www.ui.com/downloads/unifi/debian stable ubiquiti
-    state: present
-  become: yes
-
-- name: install unifi-video
+- name: install prerequisites
   apt:
     name:
       - acl
-      - unifi-video
     state: present
     update_cache: yes
     cache_valid_time: 3600
   become: yes
+
+- name: install unifi-video
+  apt:
+    deb: "{{ unifi_video_deb_url }}"
 
 - name: add default.conf
   template:
