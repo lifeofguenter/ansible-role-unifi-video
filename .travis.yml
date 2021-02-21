@@ -10,6 +10,8 @@ language: python
 sudo: required
 
 install:
+  - pip install -U pip
+
   # Install ansible
   - pip install -U ansible
 
