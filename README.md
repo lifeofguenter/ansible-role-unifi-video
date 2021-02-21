@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/lifeofguenter/ansible-role-unifi-video.svg?branch=master)](https://travis-ci.org/lifeofguenter/ansible-role-unifi-video)
+[![Build Status](https://travis-ci.com/lifeofguenter/ansible-role-unifi-video.svg?branch=master)](https://travis-ci.org/lifeofguenter/ansible-role-unifi-video)
 
 # Ansible Role: UniFi Video
 
