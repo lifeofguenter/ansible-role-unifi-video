@@ -10,13 +10,19 @@ language: generic
 sudo: required
 
 install:
+  - |
+    if [ "$(lsb_release -rs)" == "14.04" ]; then
+      sudo apt-get install -y -qq python3.5-dev
+      curl https://bootstrap.pypa.io/ez_setup.py -o - | sudo python3.5
+      sudo easy_install pip
+    fi
   - python --version
   - python3 --version
-  - pip install -U pip
-  - pip install -U urllib3 pyOpenSSL ndg-httpsclient pyasn1
+  - sudo pip install -U pip
+  - sudo pip install -U urllib3 pyOpenSSL ndg-httpsclient pyasn1
 
   # Install ansible
-  - pip install -U ansible
+  - sudo pip install -U ansible
 
   # Check ansible version
   - ansible --version
