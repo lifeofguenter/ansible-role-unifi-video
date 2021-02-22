@@ -10,6 +10,9 @@ language: python
 sudo: required
 
 install:
+  - which python
+  - whereis python
+
   - pip install -U pip
   - pip install -U urllib3 pyOpenSSL ndg-httpsclient pyasn1
 
