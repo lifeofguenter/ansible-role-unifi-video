@@ -1,8 +1,10 @@
-[![Build Status](https://travis-ci.org/lifeofguenter/ansible-role-unifi-video.svg?branch=master)](https://travis-ci.org/lifeofguenter/ansible-role-unifi-video)
-
 # Ansible Role: UniFi Video
 
+[![Build Status](https://travis-ci.com/lifeofguenter/ansible-role-unifi-video.svg?branch=master)](https://travis-ci.org/lifeofguenter/ansible-role-unifi-video)
+
 An Ansible role that installs UniFi Video (Ubiquiti Networks) on Debian like systems.
+
+_NB: this will install the legacy NVR version, please [read here](https://community.ui.com/questions/UniFi-Video-Products-End-of-Life-Announcement/dc529d39-0e58-43cc-96f0-8f0eed0d002c) for further info._
 
 ## Requirements
 

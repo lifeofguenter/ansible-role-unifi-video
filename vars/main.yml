@@ -1,5 +1,5 @@
 ---
 
-unifi_video_repo_release: "{{ ansible_distribution_release }}"
+unifi_video_os_version: "{{ ansible_distribution_version }}"
 
-# unifi_video_deb_url: "http://dl.ubnt.com/firmwares/unifi-video/{{ unifi_video_version }}/unifi-video_{{ unifi_video_version }}~{{ ansible_distribution }}{{ unifi_video_distribution_major_version }}_amd64.deb"
+unifi_video_deb_url: https://dl.ui.com/firmwares/ufv/v{{ unifi_video_version }}/unifi-video.{{ ansible_distribution }}{{ unifi_video_os_version }}_amd64.v{{ unifi_video_version }}.deb

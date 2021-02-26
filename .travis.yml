@@ -1,14 +1,20 @@
 ---
 
-dist: xenial
+matrix:
+  include:
+    - dist: xenial
+    - dist: bionic
 
-language: python
-python: "3.7"
+language: generic
 sudo: required
 
 install:
+  - python --version
+  - python3 --version
+  - sudo -H pip install -U pip
+
   # Install ansible
-  - pip install -U ansible
+  - sudo -H pip install -U ansible
 
   # Check ansible version
   - ansible --version
@@ -20,9 +26,9 @@ install:
   - ansible-galaxy install lifeofguenter.oracle-java
 
 script:
-  - ansible-playbook tests/test.yml -i tests/inventory --connection=local
+  - ansible-playbook tests/test.yml -i tests/inventory --connection=local -e "ansible_python_interpreter=$(which python3)"
 
-  - ansible-playbook tests/test.yml -i tests/inventory --connection=local
+  - ansible-playbook tests/test.yml -i tests/inventory --connection=local -e "ansible_python_interpreter=$(which python3)"
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
