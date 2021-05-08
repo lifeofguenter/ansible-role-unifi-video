@@ -23,7 +23,7 @@ none
 
     - hosts: nvr
       roles:
-        - { role: lifeofguenter.unifi-video }
+        - { role: lifeofguenter.unifi_video }
 
 ## License
 

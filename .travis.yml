@@ -1,21 +1,22 @@
 ---
 
-matrix:
-  include:
-    - dist: xenial
-    - dist: bionic
-
-language: generic
 sudo: required
 
+matrix:
+  include:
+    - dist: bionic
+    - dist: focal
+
+env:
+  - ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3
+
+# Install ansible
+addons:
+  apt:
+    packages:
+      - ansible
+
 install:
-  - python --version
-  - python3 --version
-  - sudo -H pip install -U pip
-
-  # Install ansible
-  - sudo -H pip install -U ansible
-
   # Check ansible version
   - ansible --version
 
@@ -23,12 +24,12 @@ install:
   - printf '[defaults]\nroles_path=../' > ansible.cfg
 
   # dependencies
-  - ansible-galaxy install lifeofguenter.oracle-java
+  - ansible-galaxy install lifeofguenter.java8
 
 script:
-  - ansible-playbook tests/test.yml -i tests/inventory --connection=local -e "ansible_python_interpreter=$(which python3)"
+  - ansible-playbook tests/test.yml -i tests/inventory --connection=local
 
-  - ansible-playbook tests/test.yml -i tests/inventory --connection=local -e "ansible_python_interpreter=$(which python3)"
+  - ansible-playbook tests/test.yml -i tests/inventory --connection=local
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
