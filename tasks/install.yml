@@ -1,15 +1,27 @@
 ---
 
-- set_fact:
+- name: fix debian
+  set_fact:
     unifi_video_os_version: "{{ ansible_distribution_major_version }}"
+  changed_when: no
   when:
     - ansible_distribution == 'Debian'
 
-- set_fact:
+- name: fix debian buster
+  set_fact:
     unifi_video_os_version: 9
+  changed_when: no
   when:
     - ansible_distribution == 'Debian'
     - ansible_distribution_release == 'buster'
+
+- name: fix ubuntu focal
+  set_fact:
+    unifi_video_os_version: 18.04
+  changed_when: no
+  when:
+    - ansible_distribution == 'Ubuntu'
+    - ansible_distribution_release == 'focal'
 
 - name: add apt-key
   apt_key:
@@ -37,4 +49,6 @@
     dest: /etc/default/unifi-video
     mode: 0644
   become: yes
-  notify: restart_unifi_video
+  notify:
+    - stop_unifi_video
+    - start_unifi_video

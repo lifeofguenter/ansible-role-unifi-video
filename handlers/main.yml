@@ -1,5 +1,13 @@
 ---
 
-- name: restart_unifi_video
-  shell: systemctl stop unifi-video && systemctl start unifi-video
+- name: stop_unifi_video
+  systemd:
+    name: unifi-video
+    state: stopped
+  become: yes
+
+- name: start_unifi_video
+  systemd:
+    name: unifi-video
+    state: started
   become: yes
