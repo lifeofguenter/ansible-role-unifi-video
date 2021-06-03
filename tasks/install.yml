@@ -1,5 +1,19 @@
 ---
 
+- name: get java-home
+  shell: set -eo pipefail; dirname "$(dirname "$(dpkg -L 'java-1.8.0-amazon-corretto-jdk' | grep -e bin/java$ | grep -v jre | head -n1)")"
+  args:
+    executable: /bin/bash
+  register: unifi_video_raw_java_home
+  changed_when: no
+  when: unifi_video_java_home is not defined
+
+- name: set java-home
+  set_fact:
+    unifi_java_home: "{{ unifi_video_raw_java_home.stdout }}"
+  changed_when: no
+  when: unifi_video_java_home is not defined
+
 - name: fix debian
   set_fact:
     unifi_video_os_version: "{{ ansible_distribution_major_version }}"
