@@ -17,7 +17,7 @@ none
 
 ## Dependencies
 
-- lifeofguenter.oracle-java
+- [lifeofguenter.java](https://galaxy.ansible.com/lifeofguenter/java)
 
 ## Example Playbook
 
