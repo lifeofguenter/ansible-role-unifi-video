@@ -10,7 +10,7 @@
 
 - name: set java-home
   set_fact:
-    unifi_java_home: "{{ unifi_video_raw_java_home.stdout }}"
+    unifi_video_java_home: "{{ unifi_video_raw_java_home.stdout }}"
   changed_when: no
   when: unifi_video_java_home is not defined
 
