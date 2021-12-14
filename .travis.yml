@@ -1,13 +1,8 @@
 ---
 
-sudo: required
-
+dist: focal
 language: minimal
-
-matrix:
-  include:
-    - dist: bionic
-    - dist: focal
+sudo: required
 
 env:
   - ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3
