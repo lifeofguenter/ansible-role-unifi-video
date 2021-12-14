@@ -1,0 +1,16 @@
+---
+
+# see: https://community.ui.com/questions/unifi-video-wont-start-anymore-FIX-INSIDE/297dbfc0-7e04-4a50-92b8-dab4acf50a03
+
+- name: install older java version
+  apt:
+    name: java-1.8.0-amazon-corretto-jdk=1:8.275.01-1
+    state: present
+    allow_downgrade: yes
+    update_cache: yes
+    cache_valid_time: 3600
+  become: yes
+
+- name: hold old java version
+  command: apt-mark hold java-1.8.0-amazon-corretto-jdk
+  become: yes
