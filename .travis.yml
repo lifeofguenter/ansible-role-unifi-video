@@ -12,6 +12,11 @@ matrix:
 env:
   - ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3
 
+addons:
+  apt:
+    packages:
+      - python3-pip
+
 install:
   # Install ansible
   - sudo -H pip3 install ansible
