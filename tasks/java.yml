@@ -6,6 +6,7 @@
   apt:
     name: java-1.8.0-amazon-corretto-jdk=1:8.275.01-1
     state: present
+    allow_downgrade: yes
     update_cache: yes
     cache_valid_time: 3600
   become: yes
