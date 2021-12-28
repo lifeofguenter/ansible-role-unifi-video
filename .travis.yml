@@ -4,7 +4,7 @@ dist: bionic
 language: minimal
 
 env:
-  - ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3 PATH="${PATH}:/home/travis/.local/bin"
+  - ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3.9 PATH="${PATH}:/home/travis/.local/bin"
 
 addons:
   apt:
@@ -14,8 +14,8 @@ addons:
 before_install:
   # fix for apt/allow_downgrade
   - sudo add-apt-repository -yu ppa:deadsnakes/ppa
-  - sudo apt-get -yqq install python3.10 python3.10-dev python3.10-distutils
-  - curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | sudo python3.10
+  - sudo apt-get -yqq install python3.9 python3.9-dev python3.9-distutils
+  - curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | sudo python3.9
 
 install:
   # Install ansible
