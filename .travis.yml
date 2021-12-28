@@ -19,7 +19,7 @@ before_install:
 
 install:
   # Install ansible
-  - pip3 install -U ansible ansible-lint PyYAML
+  - pip3 install -U --user ansible ansible-lint PyYAML
 
   # Check ansible versions
   - ansible --version
