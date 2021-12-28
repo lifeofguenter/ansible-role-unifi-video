@@ -4,7 +4,7 @@ dist: bionic
 language: minimal
 
 env:
-  - ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3
+  - ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3 PATH="${PATH}:/home/travis/.local/bin"
 
 addons:
   apt:
@@ -19,7 +19,7 @@ before_install:
 
 install:
   # Install ansible
-  - sudo pip3 install -U ansible ansible-lint PyYAML
+  - pip3 install -U ansible ansible-lint PyYAML
 
   # Check ansible versions
   - ansible --version
