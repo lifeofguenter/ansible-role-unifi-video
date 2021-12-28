@@ -14,7 +14,7 @@ addons:
 before_install:
   # fix for apt/allow_downgrade
   - sudo add-apt-repository -yu ppa:deadsnakes/ppa
-  - sudo apt-get -yqq install python3.10-dev
+  - sudo apt-get -yqq install python3.10 python3.10-dev python3.10-distutils
   - curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | sudo python3.10
 
 install:
