@@ -1,8 +1,9 @@
-# Ansible Role: UniFi Video
+# lifeofguenter.unifi-video
 
-[![Build Status](https://travis-ci.com/lifeofguenter/ansible-role-unifi-video.svg?branch=main)](https://travis-ci.org/lifeofguenter/ansible-role-unifi-video)
+[![Build Status](https://travis-ci.com/lifeofguenter/ansible-role-unifi-video.svg?branch=main)](https://travis-ci.com/lifeofguenter/ansible-role-unifi-video)
 
-An Ansible role that installs UniFi Video (Ubiquiti Networks) on Debian like systems.
+An Ansible role that installs and configures UniFi Video (Ubiquiti Networks) on
+Debian-like systems.
 
 _NB: this will install the legacy NVR version, please [read here](https://community.ui.com/questions/UniFi-Video-Products-End-of-Life-Announcement/dc529d39-0e58-43cc-96f0-8f0eed0d002c) for further info._
 
@@ -12,19 +13,32 @@ none
 
 ## Role Variables
 
-- `unifi_video_jvm_mx: 520M`
-- `unifi_video_app_session_timeout: 1440`
+Available variables are listed below, along with default values:
+
+```yaml
+unifi_video_version: 3.10.13
+
+unifi_video_jvm_mx: 520M
+```
 
 ## Dependencies
 
 - [lifeofguenter.java](https://galaxy.ansible.com/lifeofguenter/java)
+- [lifeofguenter.monogdb](https://galaxy.ansible.com/lifeofguenter/mongodb)
 
 ## Example Playbook
 
-    - hosts: nvr
-      roles:
-        - { role: lifeofguenter.unifi_video }
+
+```yaml
+- hosts: nvr
+  roles:
+    - { role: lifeofguenter.unifi_video }
+```
 
 ## License
 
-MIT
+**MIT**, see the [LICENSE file](LICENSE) for details.
+
+## Author Information
+
+[Günter Grodotzki](https://www.lifeofguenter.de)

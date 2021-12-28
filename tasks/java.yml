@@ -13,4 +13,5 @@
 
 - name: hold old java version
   command: apt-mark hold java-1.8.0-amazon-corretto-jdk
+  changed_when: no
   become: yes
