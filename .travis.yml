@@ -14,11 +14,11 @@ addons:
 before_install:
   # fix for apt/allow_downgrade
   - sudo add-apt-repository -yu ppa:deadsnakes/ppa
-  - sudo apt-get -yqq install python3.10-pip python3.10-setuptools python3.10-wheel
+  - sudo apt-get -yqq install python3.10-dev
 
 install:
   # Install ansible
-  - pip3 install -U pip
+  - pip3 install -U pip setuptools wheel
   - pip3 install -U ansible ansible-lint PyYAML
 
   # Check ansible versions
