@@ -18,8 +18,8 @@ before_install:
 
 install:
   # Install ansible
-  - pip3 install -U pip setuptools wheel
-  - pip3 install -U ansible ansible-lint PyYAML
+  - pip install -U pip setuptools wheel
+  - pip install -U ansible ansible-lint PyYAML
 
   # Check ansible versions
   - ansible --version
