@@ -1,8 +1,7 @@
 ---
 
-dist: focal
+dist: bionic
 language: minimal
-sudo: required
 
 env:
   - ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3
@@ -10,27 +9,32 @@ env:
 addons:
   apt:
     packages:
-      - python3-setuptools
       - python3-pip
+      - python3-setuptools
+      - python3-wheel
 
 install:
   # Install ansible
-  - sudo -H pip3 install ansible
+  - pip3 install -U pip
+  - pip3 install -U ansible ansible-lint PyYAML
 
-  # Check ansible version
+  # Check ansible versions
   - ansible --version
+  - ansible-lint --version
 
   # Create ansible.cfg with correct roles_path
   - printf '[defaults]\nroles_path=../' > ansible.cfg
 
   # dependencies
   - ansible-galaxy install lifeofguenter.java
+  - ansible-galaxy install lifeofguenter.mongodb
 
 script:
+  - ansible-lint
   - ansible-playbook tests/test.yml -i tests/inventory --connection=local
-
   - ansible-playbook tests/test.yml -i tests/inventory --connection=local
-
+  - mongod --version
+  - java -version
   - ls -lh /usr/lib/unifi-video/lib
 
 notifications:
