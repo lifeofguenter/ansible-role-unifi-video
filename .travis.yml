@@ -15,12 +15,12 @@ before_install:
   # fix for apt/allow_downgrade
   - sudo add-apt-repository -yu ppa:deadsnakes/ppa
   - sudo apt-get -yqq install python3.10-dev
+  - curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | sudo python3.10
 
 install:
   # Install ansible
-  - export PATH="${PATH}:$(python3.10 -c 'import site; print(site.USER_BASE)')/bin"
-  - python3.10 -m pip install --user -U pip setuptools wheel
-  - python3.10 -m pip install --user -U ansible ansible-lint PyYAML
+  - sudo pip3 install -U pip setuptools wheel
+  - sudo pip3 install --user -U ansible ansible-lint PyYAML
 
   # Check ansible versions
   - ansible --version
@@ -34,7 +34,6 @@ install:
   - ansible-galaxy install lifeofguenter.mongodb
 
 script:
-  - export PATH="${PATH}:$(python3.10 -c 'import site; print(site.USER_BASE)')/bin"
   - ansible-lint
   - ansible-playbook tests/test.yml -i tests/inventory --connection=local
   - ansible-playbook tests/test.yml -i tests/inventory --connection=local
