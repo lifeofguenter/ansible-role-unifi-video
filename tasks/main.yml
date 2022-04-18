@@ -1,7 +1,7 @@
 ---
 
-- import_tasks: java.yml
+- ansible.builtin.import_tasks: java.yml
 
-- import_tasks: install.yml
+- ansible.builtin.import_tasks: install.yml
 
-- import_tasks: cve-fix.yml
+- ansible.builtin.import_tasks: cve-fix.yml

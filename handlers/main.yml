@@ -1,13 +1,13 @@
 ---
 
 - name: stop_unifi_video
-  systemd:
+  ansible.builtin.systemd:
     name: unifi-video
     state: stopped
   become: yes
 
 - name: start_unifi_video
-  systemd:
+  ansible.builtin.systemd:
     name: unifi-video
     state: started
   become: yes

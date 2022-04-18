@@ -3,5 +3,3 @@
 unifi_video_deb_file: unifi-video.{{ ansible_distribution }}{{ unifi_video_os_version }}_amd64.v{{ unifi_video_version }}.deb
 
 unifi_video_deb_url: https://dl.ui.com/firmwares/ufv/v{{ unifi_video_version }}/{{ unifi_video_deb_file }}
-
-mongodb_version: '3.6'

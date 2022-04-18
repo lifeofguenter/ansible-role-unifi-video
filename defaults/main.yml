@@ -6,3 +6,5 @@ unifi_video_jvm_mx: 520M
 
 # https://github.com/ansible/ansible/issues/22025
 unifi_video_os_version: "{{ ansible_distribution_version }}"
+
+mongodb_version: '3.6'
