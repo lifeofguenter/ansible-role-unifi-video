@@ -17,15 +17,15 @@ jobs:
       - run: ansible --version
       - run: ansible-lint --version
 
+      - checkout
+
+      - run: printf '[defaults]\nroles_path=../' > ansible.cfg
+      - run: ansible-lint
+
       # dependencies
       - run: ansible-galaxy install lifeofguenter.java
       - run: ansible-galaxy install lifeofguenter.mongodb
 
-      - checkout
-
-      - run: printf '[defaults]\nroles_path=../' > ansible.cfg
-
-      - run: ansible-lint
       - run: ansible-playbook tests/test.yml -i tests/inventory --connection=local
       - run: ansible-playbook tests/test.yml -i tests/inventory --connection=local
 
