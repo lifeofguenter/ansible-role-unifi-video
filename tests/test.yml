@@ -3,7 +3,7 @@
 - hosts: localhost
 
   vars:
-    mongodb_version: '4.2'
+    mongodb_version: '4.4'
 
   tasks:
     - ansible.builtin.import_role:
