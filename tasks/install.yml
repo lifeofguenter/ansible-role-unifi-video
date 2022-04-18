@@ -24,7 +24,7 @@
 - name: add apt-key
   ansible.builtin.apt_key:
     id: 795C6027520643F0BA02297F97B46B8582C6571E
-    keyserver: keys.openpgp.org
+    keyserver: keyserver.ubuntu.com
   become: yes
 
 - name: install prerequisites
