@@ -1,0 +1,34 @@
+---
+
+version: 2.1
+
+jobs:
+
+  build:
+    machine:
+      # https://circleci.com/docs/2.0/configuration-reference/#machine
+      image: ubuntu-2004:202201-02
+    environment:
+      ANSIBLE_PYTHON_INTERPRETER: /usr/bin/python3
+
+    steps:
+      - run: pip3 install ansible ansible-lint
+
+      - run: ansible --version
+      - run: ansible-lint --version
+
+      # dependencies
+      - run: ansible-galaxy install lifeofguenter.java
+      - run: ansible-galaxy install lifeofguenter.mongodb
+
+      - checkout
+
+      - run: printf '[defaults]\nroles_path=../' > ansible.cfg
+
+      - run: ansible-lint
+      - run: ansible-playbook tests/test.yml -i tests/inventory --connection=local
+      - run: ansible-playbook tests/test.yml -i tests/inventory --connection=local
+
+      - run: mongod --version
+      - run: java -version
+      - run: ls -lh /usr/lib/unifi-video/lib
