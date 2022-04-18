@@ -1,6 +1,6 @@
 # lifeofguenter.unifi-video
 
-[![Build Status](https://travis-ci.com/lifeofguenter/ansible-role-unifi-video.svg?branch=main)](https://travis-ci.com/lifeofguenter/ansible-role-unifi-video)
+[![CircleCI](https://circleci.com/gh/lifeofguenter/ansible-role-unifi-video/tree/main.svg?style=svg)](https://circleci.com/gh/lifeofguenter/ansible-role-unifi-video/tree/main)
 
 An Ansible role that installs and configures UniFi Video (Ubiquiti Networks) on
 Debian-like systems.
