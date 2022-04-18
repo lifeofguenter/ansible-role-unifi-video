@@ -1,7 +1,7 @@
 ---
 
 - name: get java-home
-  shell: set -eo pipefail; dirname "$(dirname "$(dpkg -L 'java-1.8.0-amazon-corretto-jdk' | grep -e bin/java$ | grep -v jre | head -n1)")"
+  ansible.builtin.shell: set -eo pipefail; dirname "$(dirname "$(dpkg -L 'java-1.8.0-amazon-corretto-jdk' | grep -e bin/java$ | grep -v jre | head -n1)")"
   args:
     executable: /bin/bash
   register: unifi_video_raw_java_home
@@ -9,7 +9,7 @@
   when: unifi_video_java_home is not defined
 
 - name: set java-home
-  set_fact:
+  ansible.builtin.set_fact:
     unifi_video_java_home: "{{ unifi_video_raw_java_home.stdout }}"
   changed_when: no
   when: unifi_video_java_home is not defined
@@ -22,13 +22,14 @@
     - ansible_distribution == 'Debian'
 
 - name: add apt-key
-  apt_key:
-    url: https://keys.openpgp.org/vks/v1/by-fingerprint/795C6027520643F0BA02297F97B46B8582C6571E
+  ansible.builtin.apt_key:
+    id: 795C6027520643F0BA02297F97B46B8582C6571E
+    keyserver: keys.openpgp.org
     state: present
   become: yes
 
 - name: install prerequisites
-  apt:
+  ansible.builtin.apt:
     name:
       - acl
     state: present
@@ -37,12 +38,12 @@
   become: yes
 
 - name: install unifi-video
-  apt:
+  ansible.builtin.apt:
     deb: "{{ unifi_video_deb_url }}"
   become: yes
 
 - name: add default.conf
-  template:
+  ansible.builtin.template:
     src: default.conf
     dest: /etc/default/unifi-video
     mode: 0644

@@ -1,26 +1,19 @@
 ---
 
-dist: bionic
+dist: focal
 language: minimal
 
 env:
-  - ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3.9 PATH="${PATH}:/home/travis/.local/bin"
+  - ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3
 
+# Install ansible
 addons:
   apt:
     packages:
-      - software-properties-common
-
-before_install:
-  # fix for apt/allow_downgrade
-  - sudo add-apt-repository -yu ppa:deadsnakes/ppa
-  - sudo apt-get -yqq install python3.9 python3.9-dev python3.9-distutils
-  - curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | sudo python3.9
+      - ansible
+      - ansible-lint
 
 install:
-  # Install ansible
-  - pip3 install -U --user ansible ansible-lint PyYAML
-
   # Check ansible versions
   - ansible --version
   - ansible-lint --version
